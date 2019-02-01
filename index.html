@@ -11,9 +11,10 @@
             
         
         <link rel="points" type="application/json" href="./parcelles.json">
-        <link rel="parcelleNames" type="application/csv" href="./cadastre Plouider.csv">
+        //<link rel="parcelleNames" type="application/csv" href="./cadastre Plouider.csv">
 		<script type="text/javascript">
 	    
+
 			// On initialise la latitude et la longitude de Paris (centre de la carte)
 			var lat = 48.6;
 			var lon = -4.3;
@@ -93,6 +94,7 @@
 				  //marker.addTo(macarte);
 				new2old[newNum] =oldNum;
 				  
+
                 var parcelleName=null;  
 				for(var i = 0; i < infoParcelles.length; i += 1) {
                       if (infoParcelles[i].numParcelle==oldNum){
@@ -134,10 +136,14 @@
                 //L.tileLayer('http://mapwarper.net/mosaics/tile/1024/{z}/{x}/{y}.png ', {
                         L.tileLayer('http://mapwarper.net/mosaics/tile/1025/{z}/{x}/{y}.png', {
                 	// Il est toujours bien de laisser le lien vers la source des données
-                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                    //attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                    attribution: 'données © <a href="//www.archives-finistere.fr/r%C3%A9utilisation-des-archives-0">Archives Finistère</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                    
                     minZoom: 1,
                     maxZoom: 20
                 }).addTo(macarte);
+
+
               
 //                myLayer.addData(geojsonFeature);
 				  $.getJSON($('link[rel="points"]').attr("href"), function(data) {
@@ -161,6 +167,7 @@
 						            color: '#666',
 						            fillColor: 'white'
 						        });
+
 							  //$.ajax(... 
 							}
 					  var geojson = L.geoJson(data, {
@@ -179,6 +186,7 @@
 				//		}
 				  //var picnic_parks = L.geoJson(geojson, {filter: picnicFilter});
 				  //picnic_parks.addTo(macarte);	
+
 				  infoParcelles = readCSV("./cadastrePlouider.csv");
 				  /// ici il faut lire le fichier new2old.csv, le mettre dans new2old et nommer les parcelles qui y sont
 				  /// PB ceci est appelé avant que les polygones ne soient initialisés....
@@ -186,10 +194,12 @@
 				  for (var k in new2oldArray){
 					  //updateOldParcelleNum(new2oldArray[k].newNum, new2oldArray[k].oldNum);
 				  }
+
 			}
 			window.onload = function(){
 				// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
 				initMap(); 
+
 			};
 		</script>
 		<style type="text/css">
