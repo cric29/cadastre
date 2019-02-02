@@ -12,7 +12,6 @@
             
         
         <link rel="points" type="application/json" href="./parcelles.json">
-        //<link rel="parcelleNames" type="application/csv" href="./cadastre Plouider.csv">
 		<script type="text/javascript">
 	    
 
@@ -52,7 +51,11 @@
 				                //alert(allText);
 				                var lines= allText.split('\n');
 				                function getCsvValuesFromLine(line) {
-				                	line = line.slice(0,-1); // enlève la fin
+				                	// '\r' à la fin?
+				                	if (line[line.length-1]=='\r'){
+				                		line = line.slice(0,-1); // enlève la fin
+				                	}
+				                	
 				                    var values = line.split(',');
 				                    //values[values.length -1 ]= values[values.length -1 ].slice(0,-1)
 				                    //values = values.map(function(value){
